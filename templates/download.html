@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Download{% endblock %}
+{% block content %}
+<form class="box" action="{{url_for('download_video')}}" method="POST">
+    <div class="inner-box">
+        <label class="img">
+            <img src="{{url.thumbnail_url}}">
+        </label>
+        <div class="content">
+            <h5>{{ title }}</h5>
+            <br><br>
+            <p>{{ author }}</p>
+            <p>{{ views }} views</p>
+            <p>{{ publish_date }}</p>
+        </div>
+    </div>
+    <select class="" name="itag">
+        {% for i in url.streams.filter(progressive=True) %}
+            <option value="{{ i.itag }}">{{i.resolution}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Download">
+</form>
+{% endblock %}
