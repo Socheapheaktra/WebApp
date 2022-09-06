@@ -37,6 +37,3 @@ def download_video():
                          download_name=f'{url.title}.mp4',
                          mimetype='video/mp4')
     return redirect(url_for('home'))
-
-if __name__ == '__main__':
-    app.run(debug=False)
